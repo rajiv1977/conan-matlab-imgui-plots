@@ -1,43 +1,5 @@
-# conan-matlab-imgui-plots
+function TestMatlabImGuiPlot()
 
-# This branch provides an ImGui plot access from MATLAB.
-
-# Prerequisite (Windows or Unix):
-* Conan
-* Matlab (2023 or above)
-* Visual Studio 2022 (Win)
-
-# Build (Window):
-* Run **run_matlab_imgui_plot_debug.bat** or **run_matlab_imgui_plot_release.bat**
-* It will spontaneously open up an example from MATLAB.
-* *Run*.
-
-# Build (Unix):
-```Matlab
-conan install . -c tools.system.package_manager:mode=install -c tools.system.package_manager:sudo=True --output-folder=build --build=missing --settings=build_type=Debug
-cd build
-cmake .. -G "Unix Makefiles" -DCMAKE_TOOLCHAIN_FILE=./build/build/Debug/generators/conan_toolchain.cmake -DCMAKE_POLICY_DEFAULT_CMP0091=NEW -DCMAKE_BUILD_TYPE=Debug
-cmake --build . --config Debug
-./matlab-imgui-plot-conan (just for testing)
-```
-
-# What you need:
-**imGuiPlotMex**
-
-# An Example (from the example below):
-
-imGuiPlotMex("Testing", [1,2], m1, m2);
-![image](https://github.com/rajiv1977/conan-matlab-imgui-plots/assets/16018587/be3efcb9-4c8c-4836-a46c-cf6c676ce87a)
-
-imGuiPlotMex("Testing", [2,1], m1, m2);
-![image](https://github.com/rajiv1977/conan-matlab-imgui-plots/assets/16018587/d518f800-1185-4ad0-909e-795b43a48238)
-
-imGuiPlotMex("Testing1", [1,1], m1, "Testing2", [1,1],  m2);
-![image](https://github.com/rajiv1977/conan-matlab-imgui-plots/assets/16018587/deebd37d-9a97-4c1f-b2f0-3364196bdf95)
-
-# Help:
-* Sample MATLAB code to visually observe the results.
-```Matlab
 % Input should be as column vector
 % 3 different input
 % m.data1 = [1 2 3 4 5 6; 1 2 3 4 5 6; 1 2 3 4 5 6]'; % x-axis
@@ -91,8 +53,8 @@ imGuiPlotMex("Testing1", [1,1], m1, "Testing2", [1,1],  m2);
 % m.UncertaintyUpperBound = data2 + rand;
 
 			
-%% plot
-% imGuiPlotMex("Name", Dimension, Structures);
+%% Plot
+% imGuiPlotMex("Testing", [1,1], m);
 
 m1.data1 = [
     679.6157  679.6157
@@ -2705,13 +2667,8 @@ m2.Title = [" "];
 m2.Labels = ["Time (sec)", "Error (Kph)"];
 m2.Legends = ["Error", "Mean of Error"];
 
-imGuiPlotMex("Testing", [2,1], m1, m2);
+imGuiPlotMex("Testing1", [1,2], m1, m2);
+imGuiPlotMex("Testing2", [2,1], m1, m2);
+imGuiPlotMex("Testing3a", [1,1], m1, "Testing3b", [1,1], m2);
 
-```
-
- 
-
-
-
-
-
+end
