@@ -54,7 +54,7 @@ class MatlabImGuiPlot(ConanFile):
         self.requires("glfw/3.3.8")
         self.requires("glew/2.2.0")
         self.requires("glu/system")
-        self.requires("imgui/1.89.8")
+        self.requires("imgui/1.90")
         self.requires("implot/0.16")
         self.requires("opengl/system")
         
